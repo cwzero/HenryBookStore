@@ -523,7 +523,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // documentMode logic from YUI to filter out IE8 Compat Mode
     //   which false positives.
     tests['hashchange'] = function() {
-      return isEventSupported('hashchange', window) && (document.documentMode === undefined || document.documentMode > 7);
+      return isEventSupported('hashchange', window) && (document.documentMode === undefined || document.documentMode> 7);
     };
 
     // Per 1.6:
@@ -725,7 +725,7 @@ window.Modernizr = (function( window, document, undefined ) {
         var bool;
 
         injectElementWithStyles(['#',mod,'{font:0/0 a}#',mod,':after{content:"',smile,'";visibility:hidden;font:3px/1 a}'].join(''), function( node ) {
-          bool = node.offsetHeight >= 3;
+          bool = node.offsetHeight>= 3;
         });
 
         return bool;

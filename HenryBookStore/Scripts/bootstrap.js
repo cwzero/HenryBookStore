@@ -355,12 +355,12 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     var that        = this
     var activeIndex = this.getActiveIndex()
 
-    if (pos > (this.$items.length - 1) || pos < 0) return
+    if (pos> (this.$items.length - 1) || pos < 0) return
 
     if (this.sliding)       return this.$element.one('slid', function () { that.to(pos) })
     if (activeIndex == pos) return this.pause().cycle()
 
-    return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
+    return this.slide(pos> activeIndex ? 'next' : 'prev', $(this.$items[pos]))
   }
 
   Carousel.prototype.pause = function (e) {
@@ -554,7 +554,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.$element.trigger(startEvent)
     if (startEvent.isDefaultPrevented()) return
 
-    var actives = this.$parent && this.$parent.find('> .panel > .in')
+    var actives = this.$parent && this.$parent.find('> .panel> .in')
 
     if (actives && actives.length) {
       var hasData = actives.data('bs.collapse')
@@ -769,7 +769,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
     var index = $items.index($items.filter(':focus'))
 
-    if (e.keyCode == 38 && index > 0)                 index--                        // up
+    if (e.keyCode == 38 && index> 0)                 index--                        // up
     if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
     if (!~index)                                      index=0
 
@@ -1262,9 +1262,9 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         var parentHeight = this.options.container == 'body' ? window.innerHeight : $parent.outerHeight()
         var parentLeft   = this.options.container == 'body' ? 0 : $parent.offset().left
 
-        placement = placement == 'bottom' && pos.top   + pos.height  + actualHeight - docScroll > parentHeight  ? 'top'    :
+        placement = placement == 'bottom' && pos.top   + pos.height  + actualHeight - docScroll> parentHeight  ? 'top'    :
                     placement == 'top'    && pos.top   - docScroll   - actualHeight < 0                         ? 'bottom' :
-                    placement == 'right'  && pos.right + actualWidth > parentWidth                              ? 'left'   :
+                    placement == 'right'  && pos.right + actualWidth> parentWidth                              ? 'left'   :
                     placement == 'left'   && pos.left  - actualWidth < parentLeft                               ? 'right'  :
                     placement
 
@@ -1626,7 +1626,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
     this.selector       = (this.options.target
       || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
-      || '') + ' .nav li > a'
+      || '') + ' .nav li> a'
     this.offsets        = $([])
     this.targets        = $([])
     this.activeTarget   = null
@@ -1673,13 +1673,13 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     var activeTarget = this.activeTarget
     var i
 
-    if (scrollTop >= maxScroll) {
+    if (scrollTop>= maxScroll) {
       return activeTarget != (i = targets.last()[0]) && this.activate(i)
     }
 
     for (i = offsets.length; i--;) {
       activeTarget != targets[i]
-        && scrollTop >= offsets[i]
+        && scrollTop>= offsets[i]
         && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
         && this.activate( targets[i] )
     }
@@ -1820,7 +1820,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     function next() {
       $active
         .removeClass('active')
-        .find('> .dropdown-menu > .active')
+        .find('> .dropdown-menu> .active')
         .removeClass('active')
 
       element.addClass('active')
@@ -1949,7 +1949,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
 
     var affix = this.unpin   != null && (scrollTop + this.unpin <= position.top) ? false :
-                offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ? 'bottom' :
+                offsetBottom != null && (position.top + this.$element.height()>= scrollHeight - offsetBottom) ? 'bottom' :
                 offsetTop    != null && (scrollTop <= offsetTop) ? 'top' : false
 
     if (this.affixed === affix) return

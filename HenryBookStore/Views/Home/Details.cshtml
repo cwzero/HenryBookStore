@@ -1,0 +1,56 @@
+﻿@using HenryBookStore.Models
+@model BOOK
+
+@{
+    ViewBag.Title = "Details";
+
+    string[] value = { "True", "False" };
+    int selection = int.Parse(Model.PAPERBACK);
+    SelectList paperback = new SelectList(value, value[selection]);
+}
+
+<h2>Details</h2>
+
+<img src="~/Content/Images/@Model.BOOK_CODE/large.jpg" style="width:397px;height:600px;" />
+
+<aside>
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>@Model.TITLE</td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>@Model.TYPE</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>$@Model.PRICE</td>
+        </tr>
+        <tr>
+            <td>Paperback?</td>
+            <td>
+                @Html.DropDownList("paperback", paperback, new { disabled = "disabled" })
+            </td>
+        </tr>
+        <tr>
+            <td>Publisher</td>
+            <td>@Model.PUBLISHER.PUBLISHER_NAME</td>
+        </tr>
+        <tr>
+            <td>Book Code</td>
+            <td>@Model.BOOK_CODE</td>
+        </tr>
+        <tr>
+            <td>Written By</td>
+            <td>
+                @foreach (WROTE wrote in Model.WROTEs)
+                {
+                    AUTHOR author = wrote.AUTHOR;
+                    string name = author.AUTHOR_FIRST + " " + author.AUTHOR_LAST;
+                    <div><a href='@Url.Action("Author", "Home", new { author_num = author.AUTHOR_NUM })'>@name</a></div>
+                }
+            </td>
+        </tr>
+    </table>
+</aside>

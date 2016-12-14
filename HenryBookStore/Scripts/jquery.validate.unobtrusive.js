@@ -353,7 +353,7 @@
         var match;
         if (nonalphamin) {
             match = value.match(/\W/g);
-            match = match && match.length >= nonalphamin;
+            match = match && match.length>= nonalphamin;
         }
         return match;
     });

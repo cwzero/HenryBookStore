@@ -1,0 +1,13 @@
+﻿@using HenryBookStore.Models
+@model IEnumerable<BOOK>
+
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<h2>Browse Inventory</h2>
+
+@foreach (BOOK book in Model)
+{
+    <a href='@Url.Action("Details", "Home", new { book_code = book.BOOK_CODE })'><img src='@Url.Content("~/Content/Images/" + book.BOOK_CODE + "/thumb.jpg")' style="width:125px;height:193px;" /></a>
+}

@@ -209,7 +209,7 @@ $.validator.format = function( source, params ) {
 			return $.validator.format.apply( this, args );
 		};
 	}
-	if ( arguments.length > 2 && params.constructor !== Array  ) {
+	if ( arguments.length> 2 && params.constructor !== Array  ) {
 		params = $.makeArray(arguments).slice(1);
 	}
 	if ( params.constructor !== Array ) {
@@ -1015,12 +1015,12 @@ $.extend($.validator, {
 			if ( element.nodeName.toLowerCase() === "select" ) {
 				// could be an array for select-multiple or a string, both are fine this way
 				var val = $(element).val();
-				return val && val.length > 0;
+				return val && val.length> 0;
 			}
 			if ( this.checkable(element) ) {
-				return this.getLength(value, element) > 0;
+				return this.getLength(value, element)> 0;
 			}
-			return $.trim(value).length > 0;
+			return $.trim(value).length> 0;
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/email
@@ -1071,11 +1071,11 @@ $.extend($.validator, {
 
 			value = value.replace(/\D/g, "");
 
-			for (var n = value.length - 1; n >= 0; n--) {
+			for (var n = value.length - 1; n>= 0; n--) {
 				var cDigit = value.charAt(n);
 				nDigit = parseInt(cDigit, 10);
 				if ( bEven ) {
-					if ( (nDigit *= 2) > 9 ) {
+					if ( (nDigit *= 2)> 9 ) {
 						nDigit -= 9;
 					}
 				}
@@ -1089,7 +1089,7 @@ $.extend($.validator, {
 		// http://docs.jquery.com/Plugins/Validation/Methods/minlength
 		minlength: function( value, element, param ) {
 			var length = $.isArray( value ) ? value.length : this.getLength($.trim(value), element);
-			return this.optional(element) || length >= param;
+			return this.optional(element) || length>= param;
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/maxlength
@@ -1101,12 +1101,12 @@ $.extend($.validator, {
 		// http://docs.jquery.com/Plugins/Validation/Methods/rangelength
 		rangelength: function( value, element, param ) {
 			var length = $.isArray( value ) ? value.length : this.getLength($.trim(value), element);
-			return this.optional(element) || ( length >= param[0] && length <= param[1] );
+			return this.optional(element) || ( length>= param[0] && length <= param[1] );
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/min
 		min: function( value, element, param ) {
-			return this.optional(element) || value >= param;
+			return this.optional(element) || value>= param;
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/max
@@ -1116,7 +1116,7 @@ $.extend($.validator, {
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/range
 		range: function( value, element, param ) {
-			return this.optional(element) || ( value >= param[0] && value <= param[1] );
+			return this.optional(element) || ( value>= param[0] && value <= param[1] );
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/equalTo
